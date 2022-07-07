@@ -22,6 +22,9 @@ TRANSLATOR:
       - { action: accept, from: "^plc_tag_" }
       - { action: replace, from: "^plc_tag_" }
       - { transform: export }
+      - { action: ignore, from: "plc_tag_create_ex" }
+      - { action: ignore, from: "plc_tag_register_callback" }
+      - { action: ignore, from: "plc_tag_register_logger" }
     const:
       - { action: accept, from: "^PLCTAG_" }
       - { action: replace, from: "^Plctag" }

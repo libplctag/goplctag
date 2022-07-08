@@ -8,7 +8,7 @@
 
 ## Install goplctag
 
-Download and install goplc per tag:
+Download and install goplctag per tag:
 
 ```
 go get github.com/libplctag/goplctag@<tag>

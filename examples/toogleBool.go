@@ -48,7 +48,7 @@ import (
 	 /* create the tag */
 	 tag := plctag.Create(TAG_PATH, DATA_TIMEOUT)
 	 if tag < 0 {
-		 fmt.Printf("ERROR %s: Could not create tag!\n", plctag.DecodeError(int(tag)))
+		 fmt.Printf("ERROR %s: Could not create tag!\n", plctag.DecodeError(int32(tag)))
 		 os.Exit(0)
 	 }
  

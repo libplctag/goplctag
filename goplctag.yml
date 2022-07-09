@@ -1,0 +1,50 @@
+---
+GENERATOR:
+  PackageName: goplctag
+  PackageDescription: "Go package goplctag, a wrapper for libplctag c library"
+  PackageLicense: "Mozilla Public License 2.0, and LGPL License."
+  PkgConfigOpts: [libplctag]
+  Includes: ["libplctag.h", "callbacks.h"]
+
+PARSER:
+  IncludePaths: ["/usr/include/", "/usr/include/x86_64-linux-gnu/"]
+  SourcesPaths: ["/usr/local/include/libplctag.h", "callbacks.h"]
+
+TRANSLATOR:
+  ConstRules:
+    defines: eval
+  PtrTips:
+    function:
+      - { target: "plc_tag_create_ex", tips: [ref, sref] }
+  Rules:
+    global:
+      - { transform: lower }
+      - { action: accept, from: "^plc_tag_" }
+      - { action: replace, from: "^plc_tag_" }
+      - { action: ignore, from: "^plc_tag_create_ex" }
+      - { action: ignore, from: "^plc_tag_register_callback" }
+      - { action: ignore, from: "^plc_tag_register_logger" }
+      - { action: accept, from: "^go_plc_tag_" }
+      - { action: replace, from: "^go_plc_tag_" }
+      - { transform: export }
+    const:
+      - { action: accept, from: "^PLCTAG_" }
+      - { action: replace, from: "^Plctag" }
+    type:
+      - { action: replace, from: "_t$" }
+    private:
+      - { transform: unexport }
+    post-global:
+      - { action: doc, from: "^ogg_u?int[0-9]+_t" } # types like ogg_uint32_t
+      - {
+          action: doc,
+          from: "^ogg_",
+          to: "https://xiph.org/ogg/doc/libogg/$name.html",
+        }
+      - {
+          action: doc,
+          from: "^vorbis_",
+          to: "https://xiph.org/vorbis/doc/libvorbis/$name.html",
+        }
+      - { action: replace, from: _$ }
+      - { load: snakecase }

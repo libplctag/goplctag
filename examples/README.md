@@ -1,7 +1,7 @@
 # Running the examples
 
 - Ensure libplctag is installed system wide
-- Install libplctag/go with go get
+- Install goplctag with go get
 
 ## Running toogleBool.go
 

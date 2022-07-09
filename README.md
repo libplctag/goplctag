@@ -8,10 +8,10 @@
 
 ## Install go/plctag
 
-Download and install goplc per tag:
+Download and install latest libplctag/go per tag:
 
 ```
-go get github.com/libplctag/go@<tag>
+go get github.com/libplctag/go@v0.0.3
 ```
 
 Examples:

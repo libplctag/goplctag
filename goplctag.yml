@@ -1,14 +1,14 @@
 ---
 GENERATOR:
-  PackageName: plctag
-  PackageDescription: "Go package plctag, a wrapper for libplctag c library"
+  PackageName: goplctag
+  PackageDescription: "Go package goplctag, a wrapper for libplctag c library"
   PackageLicense: "Mozilla Public License 2.0, and LGPL License."
   PkgConfigOpts: [libplctag]
   Includes: ["libplctag.h", "callbacks.h"]
 
 PARSER:
   IncludePaths: ["/usr/include/", "/usr/include/x86_64-linux-gnu/"]
-  SourcesPaths: ["/usr/local/include/libplctag.h", "./plctag/callbacks.h"]
+  SourcesPaths: ["/usr/local/include/libplctag.h", "callbacks.h"]
 
 TRANSLATOR:
   ConstRules:

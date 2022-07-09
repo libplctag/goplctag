@@ -1,7 +1,6 @@
-package plctag
+package goplctag
 
 import (
-	"plctag"
 	"testing"
 )
 
@@ -11,8 +10,8 @@ const (
 )
 
 func TestCreateTag(t *testing.T){
-	tag := plctag.Create(TAG_PATH, DATA_TIMEOUT)
+	tag := Create(TAG_PATH, DATA_TIMEOUT)
 	if tag < 0 {
-		t.Errorf("ERROR %s: Could not create tag!\n", plctag.DecodeError(int32(tag)))
+		t.Errorf("ERROR %s: Could not create tag!\n", DecodeError(int32(tag)))
 	}
 }

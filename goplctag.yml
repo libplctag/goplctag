@@ -4,11 +4,11 @@ GENERATOR:
   PackageDescription: "Go package goplctag, a wrapper for libplctag c library"
   PackageLicense: "Mozilla Public License 2.0, and LGPL License."
   PkgConfigOpts: [libplctag]
-  Includes: ["libplctag.h", "callbacks.h"]
+  Includes: ["libplctag.h"]
 
 PARSER:
   IncludePaths: ["/usr/include/", "/usr/include/x86_64-linux-gnu/"]
-  SourcesPaths: ["/usr/local/include/libplctag.h", "callbacks.h"]
+  SourcesPaths: ["/usr/local/include/libplctag.h"]
 
 TRANSLATOR:
   ConstRules:
@@ -24,8 +24,6 @@ TRANSLATOR:
       - { action: ignore, from: "^plc_tag_create_ex" }
       - { action: ignore, from: "^plc_tag_register_callback" }
       - { action: ignore, from: "^plc_tag_register_logger" }
-      - { action: accept, from: "^go_plc_tag_" }
-      - { action: replace, from: "^go_plc_tag_" }
       - { transform: export }
     const:
       - { action: accept, from: "^PLCTAG_" }

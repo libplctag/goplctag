@@ -36,7 +36,8 @@ import (
 	"fmt"
 	"os"
 
-	plctag "github.com/libplctag/goplctag"
+	plctag "github.com/libplctag/goplctag/goplctag"
+	//cbacks "github.com/libplctag/goplctag/callbacks"
 )
  
  const (
@@ -51,6 +52,8 @@ import (
 		 fmt.Printf("ERROR %s: Could not create tag!\n", plctag.DecodeError(int32(tag)))
 		 os.Exit(0)
 	 }
+
+	 //cbacks.CreateEx()
  
 	 /* everything OK? */
 	 if rc := plctag.Status(tag); rc != plctag.StatusOk {

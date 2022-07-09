@@ -36,7 +36,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/libplctag/go/plctag"
+	plctag "github.com/libplctag/goplctag"
 )
  
  const (

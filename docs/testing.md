@@ -14,6 +14,17 @@ Todo
 
 - configure settings for plc
 
+config.go
+
 ```
-go test
+package goplctag
+
+const protocol = "protocol=ab_eip&"
+const gateway = "gateway=192.168.1.14&path=1,1&"
+const plcType = "plc=controllogix&"
+const TIMEOUT = 5000
+```
+
+```
+go test --cover
 ```

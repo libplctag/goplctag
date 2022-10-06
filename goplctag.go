@@ -385,18 +385,18 @@ func SetUint8(tag int32, offset int32, val byte) int32 {
 }
 
 // GetInt8 function as declared in include/libplctag.h:492
-func GetInt8(tag int32, offset int32) byte {
+func GetInt8(tag int32, offset int32) int8 {
 	ctag, ctagAllocMap := (C.int32_t)(tag), cgoAllocsUnknown
 	coffset, coffsetAllocMap := (C.int)(offset), cgoAllocsUnknown
 	__ret := C.plc_tag_get_int8(ctag, coffset)
 	runtime.KeepAlive(coffsetAllocMap)
 	runtime.KeepAlive(ctagAllocMap)
-	__v := (byte)(__ret)
+	__v := (int8)(__ret)
 	return __v
 }
 
 // SetInt8 function as declared in include/libplctag.h:493
-func SetInt8(arg0 int32, offset int32, val byte) int32 {
+func SetInt8(arg0 int32, offset int32, val int8) int32 {
 	carg0, carg0AllocMap := (C.int32_t)(arg0), cgoAllocsUnknown
 	coffset, coffsetAllocMap := (C.int)(offset), cgoAllocsUnknown
 	cval, cvalAllocMap := (C.int8_t)(val), cgoAllocsUnknown

@@ -201,15 +201,15 @@ func TestSintTag(t *testing.T) {
 		t.Errorf("ERROR: Unable to read the data! Got error code %d: %s\n", rc, DecodeError(rc))
 	}
 
-	t1 := GetInt8(tag, 0) // BUG needs fixing on autogeneration
+	t1 := GetInt8(tag, 0) // BUG needs fixing on auto-generation, manually fixed for now
 
-	//if t1 > 1 {
-	//	t1 = 55
-	//} else {
-	//	t1 = -55
-	//}
+	if t1 > 1 {
+		t1 = -55
+	} else {
+		t1 = 55
+	}
 
-	SetInt8(tag, 0, 55)
+	SetInt8(tag, 0, t1)
 	if rc := Write(tag, TIMEOUT); rc != StatusOk {
 		t.Errorf("ERROR: Unable to write the data! Got error code %d: %s\n", rc, DecodeError(rc))
 	}

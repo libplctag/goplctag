@@ -139,4 +139,192 @@ func TestBoolTag(t *testing.T) {
 	if rc := Write(tag, TIMEOUT); rc != StatusOk {
 		t.Errorf("ERROR: Unable to write the data! Got error code %d: %s\n", rc, DecodeError(rc))
 	}
+
+	bit = GetBit(tag, 0)
+	println("BaseBOOL: ", bit)
+}
+
+func TestRealTag(t *testing.T) {
+	const (
+		tagPath = protocol + gateway + plcType + "elem_size=1&elem_count=1&debug=1&name=BaseREAL"
+	)
+	/* create the tag */
+	tag := Create(tagPath, TIMEOUT)
+	if tag < 0 {
+		t.Errorf("ERROR %s: Could not create tag!\n", DecodeError(int32(tag)))
+	}
+
+	/* everything OK? */
+	if rc := Status(tag); rc != StatusOk {
+		t.Errorf("ERROR %s: Error setting up tag internal state.\n", DecodeError(rc))
+	}
+
+	/* get the data */
+	if rc := Read(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to read the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 := GetFloat32(tag, 0)
+
+	if t1 > 2.5 {
+		t1 = 1.5
+	} else {
+		t1 = 3.5
+	}
+
+	SetFloat32(tag, 0, t1)
+	if rc := Write(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to write the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 = GetFloat32(tag, 0)
+	println("BaseREAL: ", t1)
+}
+
+func TestSintTag(t *testing.T) {
+	const (
+		tagPath = protocol + gateway + plcType + "elem_size=1&elem_count=1&debug=1&name=BaseSINT"
+	)
+	/* create the tag */
+	tag := Create(tagPath, TIMEOUT)
+	if tag < 0 {
+		t.Errorf("ERROR %s: Could not create tag!\n", DecodeError(int32(tag)))
+	}
+
+	/* everything OK? */
+	if rc := Status(tag); rc != StatusOk {
+		t.Errorf("ERROR %s: Error setting up tag internal state.\n", DecodeError(rc))
+	}
+
+	/* get the data */
+	if rc := Read(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to read the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 := GetInt8(tag, 0) // BUG needs fixing on autogeneration
+
+	//if t1 > 1 {
+	//	t1 = 55
+	//} else {
+	//	t1 = -55
+	//}
+
+	SetInt8(tag, 0, 55)
+	if rc := Write(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to write the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 = GetInt8(tag, 0)
+	println("BaseSINT: ", t1)
+}
+
+func TestIntTag(t *testing.T) {
+	const (
+		tagPath = protocol + gateway + plcType + "elem_size=1&elem_count=1&debug=1&name=BaseINT"
+	)
+	/* create the tag */
+	tag := Create(tagPath, TIMEOUT)
+	if tag < 0 {
+		t.Errorf("ERROR %s: Could not create tag!\n", DecodeError(int32(tag)))
+	}
+
+	/* everything OK? */
+	if rc := Status(tag); rc != StatusOk {
+		t.Errorf("ERROR %s: Error setting up tag internal state.\n", DecodeError(rc))
+	}
+
+	/* get the data */
+	if rc := Read(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to read the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 := GetInt16(tag, 0)
+
+	if t1 > 1 {
+		t1 = -6512
+	} else {
+		t1 = 6512
+	}
+
+	SetInt16(tag, 0, t1)
+	if rc := Write(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to write the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 = GetInt16(tag, 0)
+	println("BaseINT: ", t1)
+}
+
+func TestDintTag(t *testing.T) {
+	const (
+		tagPath = protocol + gateway + plcType + "elem_size=1&elem_count=1&debug=1&name=BaseDINT"
+	)
+	/* create the tag */
+	tag := Create(tagPath, TIMEOUT)
+	if tag < 0 {
+		t.Errorf("ERROR %s: Could not create tag!\n", DecodeError(int32(tag)))
+	}
+
+	/* everything OK? */
+	if rc := Status(tag); rc != StatusOk {
+		t.Errorf("ERROR %s: Error setting up tag internal state.\n", DecodeError(rc))
+	}
+
+	/* get the data */
+	if rc := Read(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to read the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 := GetInt32(tag, 0)
+
+	if t1 > 1 {
+		t1 = -2147483648
+	} else {
+		t1 = 2147483647
+	}
+
+	SetInt32(tag, 0, t1)
+	if rc := Write(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to write the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 = GetInt32(tag, 0)
+	println("BaseDINT: ", t1)
+}
+
+func TestLintTag(t *testing.T) {
+	const (
+		tagPath = protocol + gateway + plcType + "elem_size=1&elem_count=1&debug=1&name=BaseLINT"
+	)
+	/* create the tag */
+	tag := Create(tagPath, TIMEOUT)
+	if tag < 0 {
+		t.Errorf("ERROR %s: Could not create tag!\n", DecodeError(int32(tag)))
+	}
+
+	/* everything OK? */
+	if rc := Status(tag); rc != StatusOk {
+		t.Errorf("ERROR %s: Error setting up tag internal state.\n", DecodeError(rc))
+	}
+
+	/* get the data */
+	if rc := Read(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to read the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 := GetInt64(tag, 0)
+
+	if t1 > 1 {
+		t1 = -566906435
+	} else {
+		t1 = 566906435
+	}
+
+	SetInt64(tag, 0, t1)
+	if rc := Write(tag, TIMEOUT); rc != StatusOk {
+		t.Errorf("ERROR: Unable to write the data! Got error code %d: %s\n", rc, DecodeError(rc))
+	}
+
+	t1 = GetInt64(tag, 0)
+	println("BaseLINT: ", t1)
 }

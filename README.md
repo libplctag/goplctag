@@ -9,7 +9,7 @@
 Download and install latest goplctag per tag:
 
 ```
-go get github.com/libplctag/goplctag@v1.0.2
+go get github.com/libplctag/goplctag@v1.0.3
 ```
 
 Examples:

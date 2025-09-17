@@ -1,3 +1,6 @@
+> Looking for maintainers
+> If you're interested hit me up fernandobe+git@protonmail.com
+
 # A Go language wrapper for the C libplctag PLC communications library.
 
 - [Installing libplctag](docs/installing-libplctag.md)

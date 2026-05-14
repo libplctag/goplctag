@@ -6,6 +6,7 @@
 - [Installing libplctag](docs/installing-libplctag.md)
 - [Version compatibility](docs/version-compatibility.md)
 - [Examples](examples/README.md)
+- [Use of AI core lib policy](https://github.com/libplctag/libplctag/blob/release/AI-POLICY.md)
 
 ## Install goplctag
 
